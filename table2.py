@@ -1,24 +1,6 @@
 from pprint import pprint
 
-with open('/Users/Guest/Downloads/small_ref.fa') as f:
-    for line in f:
-        print(line.rstrip())
-        first = True
-        ref = ''
-        ref_name = ''
-        for line in f:
-            if first:
-                ref_name = line.strip()
-                first = continue
-            ref+=line.strip()
-                
-        
-            
-    with open('/Users/Guest/Downloads/small.fastq') as f:
-        
-       
-    
-   
+
         
 def Score(a, b):   
     if a == '-' or b == '-':
@@ -78,14 +60,58 @@ def align(s,t):
             ta = t[j-1] + ta
             j-=1
         elif x[i][j] == 0:
-            i=0
-            j=0
+            return i
         
 
-    pprint(x)
+    #pprint(x)
 
     print(sa)
     print(ta)
+
+with open('/Users/Guest/Downloads/small_ref.fa') as f:
+    first = True
+    ref = ''
+    ref_name = ''
+    for line in f:
+        if first:
+            ref_name = line.strip()
+            first = False
+            continue
+        ref+=line.strip()           
+
+with open('/Users/Guest/Downloads/output.txt', 'w') as out:
+    with open('/Users/Guest/Downloads/small.fastq') as f:
+        counter = 0
+        for line in f:
+            if counter % 4 == 0:
+                rid_name = line.strip()
+                counter += 1
+                continue
+            if counter % 4 == 1:
+                rid = line.strip()
+                counter += 1
+                continue
+            if counter % 4 == 2:
+                counter += 1
+                continue
+            if counter % 4 == 3:
+                qual = line.strip()
+                counter += 1
+
+            coordinate = align(ref, rid)
+            print(rid_name,ref_name,coordinate,rid,qual,sep = '\t', file = out)
+            
+            
+
+            
+            
+
+        
+            
+        
+       
+    
+   
 
     
 
