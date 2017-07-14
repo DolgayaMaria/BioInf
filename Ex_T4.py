@@ -5,6 +5,7 @@ def F(w):
         if w[i] not in a:
             a.append(w[i])
     return a
+        
 
     
               

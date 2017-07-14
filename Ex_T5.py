@@ -9,4 +9,3 @@ def F(a):
         c += [b[i]] * int(b[i + 1])
     c.sort()
     return ', '.join(c)
-
