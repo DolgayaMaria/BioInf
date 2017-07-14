@@ -1,5 +1,7 @@
 import math
-import matplotlib.pyplot as super_module
+import matplotlib.pyplot as my_super_module
+# Подсчет ридов выровненных на гены - оценка экспрессии генов (экспрессия)
+# Дифференциальная экспрессия - сравнение эспрессии генов больных и здоровых людей
 
 with open ('/home/aleksandrsl/Projects/gotocamp/diff_expr/norm_camp.tsv') as f:
     line = f.readline().strip().split('\t')
@@ -34,8 +36,8 @@ with open ('/home/aleksandrsl/Projects/gotocamp/diff_expr/norm_camp.tsv') as f:
         diff.append(math.log2(aver_case/aver_control))
         print(diff)
 
-super_module.plot(average_total,diff, 'ro')
-super_module.show()
+my_super_module.plot(average_total,diff, 'ro')
+my_super_module.show()
 
 target_gene = []
 for i in range(len(diff)):
